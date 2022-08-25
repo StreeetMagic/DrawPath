@@ -7,31 +7,43 @@ namespace Scripts.Path
     public class Path : MonoBehaviour
     {
         [SerializeField] private List<MainPoint> _points = new List<MainPoint>();
-
         [SerializeField] private GameObject _cubeContainer;
         [SerializeField] private List<DrawCube> _cubes = new List<DrawCube>();
         [SerializeField] private DrawCube _cubeTemplate;
 
         private void Start()
         {
+            CreatePoints();
+            
             DrawMesh();
+            
+        }
+
+        private void CreatePoints()
+        {
+           // var point1 = Instantiate(_poin)
+
         }
 
         private void DrawMesh()
         {
             CreateVertices();
 
-            for (int i = 1; i < _points.Count; i++)
-            {
-                var cube = Instantiate(_cubeTemplate, transform.position, Quaternion.identity,
-                    _cubeContainer.transform);
-                _cubes.Add(cube);
-                cube.InitMainPoints(_points[i - 1], _points[i]);
-                cube.CreateShape();
-                cube.UpdateMesh();
-            }
+            CreateCube(_points[0], _points[1]);
         }
 
+
+        private void CreateCube(MainPoint start, MainPoint finish)
+        {
+            var cube = Instantiate(_cubeTemplate, transform.position, Quaternion.identity,
+                _cubeContainer.transform);
+            
+            _cubes.Add(cube);
+            cube.InitMainPoints(start, finish);
+            cube.CreateShape();
+            cube.UpdateMesh();
+        }
+        
         private void CreateVertices()
         {
             _points[0].transform.forward = _points[0].transform.position - _points[1].transform.position;
