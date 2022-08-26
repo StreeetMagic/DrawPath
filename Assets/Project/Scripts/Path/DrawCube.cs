@@ -23,6 +23,7 @@ namespace Scripts.Path
         private void Start()
         {
             GetComponent<MeshCollider>().sharedMesh = mesh;
+            GetComponent<Rigidbody>().isKinematic = true;
         }
 
         public void InitMainPoints(MainPoint first, MainPoint second)
