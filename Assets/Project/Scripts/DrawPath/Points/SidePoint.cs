@@ -6,8 +6,8 @@ namespace Scripts.Path.Point
     {
         [SerializeField] private DepthPoint _depthPoint;
 
-        [field: SerializeField] public DepthPoint ClosePoint { get; private set; }
-        [field: SerializeField] public DepthPoint FarPoint { get; private set; }
+        public DepthPoint ClosePoint { get; private set; }
+        public DepthPoint FarPoint { get; private set; }
 
         public void InitClosePoint(DepthPoint depthPoint)
         {
@@ -17,15 +17,6 @@ namespace Scripts.Path.Point
         public void InitFarPoint(DepthPoint depthPoint)
         {
             FarPoint = depthPoint;
-        }
-
-        public void InitDepthPoints()
-        {
-            var closePoint = CreateDepthPoint(Vector3.right * 2);
-            InitClosePoint(closePoint);
-
-            var farPoint = CreateDepthPoint(Vector3.left * 2);
-            InitFarPoint(farPoint);
         }
 
         public DepthPoint CreateDepthPoint(Vector3 direction)

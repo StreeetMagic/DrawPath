@@ -5,22 +5,31 @@ namespace Scripts.Path.Point
 {
     public class MainPoint : MonoBehaviour
     {
-        [SerializeField] private float _width;
-        [SerializeField] private float _thickness;
+        private const float Width = 1f;
+        private const float Thickness = 0.3f;
+
         [SerializeField] private SidePoint _sidePoint;
 
-        
-        [field: SerializeField] public SidePoint LeftPoint { get; private set; }
-        [field: SerializeField] public SidePoint RightPoint { get; private set; }
+        public SidePoint LeftPoint { get; private set; }
+        public SidePoint RightPoint { get; private set; }
+
+        public void InitSidePoints()
+        {
+            var leftPoint = CreateSidePoint(Vector3.up * Thickness);
+            InitLeftPoint(leftPoint);
+
+            var rightPoint = CreateSidePoint(Vector3.down * Thickness);
+            InitRightPoint(rightPoint);
+        }
 
         private void InitLeftPoint(SidePoint sidePoint)
         {
             LeftPoint = sidePoint;
 
-            var closePoint = LeftPoint.CreateDepthPoint(Vector3.left * _width);
+            var closePoint = LeftPoint.CreateDepthPoint(Vector3.left * Width);
             LeftPoint.InitClosePoint(closePoint);
 
-            var farPoint = LeftPoint.CreateDepthPoint(Vector3.right * _width);
+            var farPoint = LeftPoint.CreateDepthPoint(Vector3.right * Width);
             LeftPoint.InitFarPoint(farPoint);
         }
 
@@ -28,20 +37,11 @@ namespace Scripts.Path.Point
         {
             RightPoint = sidePoint;
 
-            var closePoint = RightPoint.CreateDepthPoint(Vector3.left * _width);
+            var closePoint = RightPoint.CreateDepthPoint(Vector3.left * Width);
             RightPoint.InitClosePoint(closePoint);
 
-            var farPoint = RightPoint.CreateDepthPoint(Vector3.right * _width);
+            var farPoint = RightPoint.CreateDepthPoint(Vector3.right * Width);
             RightPoint.InitFarPoint(farPoint);
-        }
-
-        public void InitSidePoints()
-        {
-            var leftPoint = CreateSidePoint(Vector3.up *_thickness);
-            InitLeftPoint(leftPoint);
-
-            var rightPoint = CreateSidePoint(Vector3.down *_thickness);
-            InitRightPoint(rightPoint);
         }
 
         private SidePoint CreateSidePoint(Vector3 direction)

@@ -1,14 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts.Path
 {
     public class DrawPath : MonoBehaviour
     {
-        [SerializeField] private Path _pathTemplate;
-        [SerializeField] private List<Path> _paths = new List<Path>();
-
+        private const float Cooldown = .01f;
+        private const float Distance = .5f;
+        
+        [SerializeField] private Path _pathTemplate; 
+        
         private Vector3 _worldPosition;
         private Plane _plane = new Plane(Vector3.forward, 0);
         private Coroutine _drawingCoroutine;
@@ -34,7 +35,6 @@ namespace Scripts.Path
         private IEnumerator Drawing()
         {
             var path = Instantiate(_pathTemplate, transform.position, Quaternion.identity, transform);
-            _paths.Add(path);
 
             var prevPoint = new Vector3(0, 0, 0);
             var currPoint = new Vector3(0, 0, 0);
@@ -43,20 +43,21 @@ namespace Scripts.Path
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (_plane.Raycast(ray, out var distance))
+                if (_plane.Raycast(ray, out var location))
                 {
-                    _worldPosition = ray.GetPoint(distance);
+                    _worldPosition = ray.GetPoint(location);
                     prevPoint = currPoint;
                     currPoint = _worldPosition;
                 }
-                var distance1 = Vector3.Distance(prevPoint, currPoint);
+                
+                var distance = Vector3.Distance(prevPoint, currPoint);
 
-                if (distance1 > 1f)
+                if (distance > Distance)
                 {
                     path.AddMainPoint(_worldPosition);
                 }
 
-                yield return new WaitForSeconds(.05f);
+                yield return new WaitForSeconds(Cooldown);
             }
         }
     }

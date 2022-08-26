@@ -6,19 +6,18 @@ namespace Scripts.Path
 {
     public class Path : MonoBehaviour
     {
-        [SerializeField] private List<MainPoint> _points = new List<MainPoint>();
-        [SerializeField] private List<DrawCube> _cubes = new List<DrawCube>();
         [SerializeField] private GameObject _cubeContainer;
         [SerializeField] private GameObject _pointContainer;
         [SerializeField] private DrawCube _cubeTemplate;
         [SerializeField] private MainPoint _mainPointTemplate;
 
+        private readonly List<MainPoint> _points = new List<MainPoint>();
+        
         private void CreateCube(MainPoint start, MainPoint finish)
         {
             var cube = Instantiate(_cubeTemplate, transform.position, Quaternion.identity,
                 _cubeContainer.transform);
-
-            _cubes.Add(cube);
+            
             cube.InitMainPoints(start, finish);
             cube.CreateShape();
             cube.UpdateMesh();
@@ -43,7 +42,6 @@ namespace Scripts.Path
                 _points[1].InitSidePoints();
                 TurnToParent(_points[1], _points[0]);
                 _points[0].transform.forward = _points[1].transform.forward;
-                CreateCube(_points[0], _points[1]);
             }
 
             if (_points.Count > 2)
