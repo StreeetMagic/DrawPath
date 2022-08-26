@@ -5,8 +5,8 @@ namespace Scripts.Path.Point
 {
     public class MainPoint : MonoBehaviour
     {
-        [SerializeField] private float _width = 1f;
-        [SerializeField] private float _thikness = .5f;
+        [SerializeField] private float _width;
+        [SerializeField] private float _thickness;
         [SerializeField] private SidePoint _sidePoint;
 
         
@@ -28,19 +28,19 @@ namespace Scripts.Path.Point
         {
             RightPoint = sidePoint;
 
-            var closePoint = RightPoint.CreateDepthPoint(Vector3.right * _width);
+            var closePoint = RightPoint.CreateDepthPoint(Vector3.left * _width);
             RightPoint.InitClosePoint(closePoint);
 
-            var farPoint = RightPoint.CreateDepthPoint(Vector3.left * _width);
+            var farPoint = RightPoint.CreateDepthPoint(Vector3.right * _width);
             RightPoint.InitFarPoint(farPoint);
         }
 
         public void InitSidePoints()
         {
-            var leftPoint = CreateSidePoint(Vector3.up *_thikness);
+            var leftPoint = CreateSidePoint(Vector3.up *_thickness);
             InitLeftPoint(leftPoint);
 
-            var rightPoint = CreateSidePoint(Vector3.down *_thikness);
+            var rightPoint = CreateSidePoint(Vector3.down *_thickness);
             InitRightPoint(rightPoint);
         }
 

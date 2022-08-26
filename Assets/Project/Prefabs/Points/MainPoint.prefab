@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a723cac11cd31c4bba9e3d499e5613e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 3
+  _width: 1
+  _thickness: 0.3
   _sidePoint: {fileID: -4979848598496755978, guid: ce4a94043821dbb49aef5e6aa4ad20d0, type: 3}
   <LeftPoint>k__BackingField: {fileID: 0}
   <RightPoint>k__BackingField: {fileID: 0}

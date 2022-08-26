@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3986416585696645733}
   - component: {fileID: 3986416585696645732}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DrawPath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pathTemplate: {fileID: 660394044599013370, guid: 2f6582acc2b73d342b061217b8ff97f9, type: 3}
-  _omegaBall: {fileID: 0}
+  _paths: []

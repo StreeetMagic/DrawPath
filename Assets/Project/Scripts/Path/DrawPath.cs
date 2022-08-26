@@ -8,13 +8,10 @@ namespace Scripts.Path
     {
         [SerializeField] private Path _pathTemplate;
         [SerializeField] private List<Path> _paths = new List<Path>();
-        [SerializeField] private GameObject _omegaBall;
 
-        private Vector3 worldPosition;
-        private Plane plane = new Plane(Vector3.forward, 0);
+        private Vector3 _worldPosition;
+        private Plane _plane = new Plane(Vector3.forward, 0);
         private Coroutine _drawingCoroutine;
-        private bool CanDraw;
-        
 
         private void Update()
         {
@@ -22,15 +19,15 @@ namespace Scripts.Path
             {
                 if (_drawingCoroutine != null)
                 {
-                    CanDraw = false;
+                    StopCoroutine(_drawingCoroutine);
                 }
-                CanDraw = true;
-                StartCoroutine(Drawing());
+
+                _drawingCoroutine = StartCoroutine(Drawing());
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                CanDraw = false;
+                StopCoroutine(_drawingCoroutine);
             }
         }
 
@@ -42,25 +39,21 @@ namespace Scripts.Path
             var prevPoint = new Vector3(0, 0, 0);
             var currPoint = new Vector3(0, 0, 0);
 
-            while (CanDraw)
+            while (true)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (plane.Raycast(ray, out var distance))
+                if (_plane.Raycast(ray, out var distance))
                 {
-                    worldPosition = ray.GetPoint(distance);
-
+                    _worldPosition = ray.GetPoint(distance);
                     prevPoint = currPoint;
-
-                    currPoint = worldPosition;
+                    currPoint = _worldPosition;
                 }
-
                 var distance1 = Vector3.Distance(prevPoint, currPoint);
 
                 if (distance1 > 1f)
                 {
-                    Debug.Log(distance1);
-                    path.AddMainPoint(worldPosition);
+                    path.AddMainPoint(_worldPosition);
                 }
 
                 yield return new WaitForSeconds(.05f);
