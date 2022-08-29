@@ -1,12 +1,11 @@
-using System.Net;
 using UnityEngine;
 
-namespace Scripts.Path.Point
+namespace Scripts.DrawPath.Points
 {
     public class MainPoint : MonoBehaviour
     {
-        private const float Width = 1f;
-        private const float Thickness = 0.3f;
+        private const float Width = .5f;
+        private const float Thickness = 0.2f;
 
         [SerializeField] private SidePoint _sidePoint;
 

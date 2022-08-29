@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Scripts.Path.Point;
+using Scripts.DrawPath.Points;
 using UnityEngine;
 
-namespace Scripts.Path
+namespace Scripts.DrawPath
 {
     public class Path : MonoBehaviour
     {
@@ -12,12 +12,12 @@ namespace Scripts.Path
         [SerializeField] private MainPoint _mainPointTemplate;
 
         private readonly List<MainPoint> _points = new List<MainPoint>();
-        
+
         private void CreateCube(MainPoint start, MainPoint finish)
         {
             var cube = Instantiate(_cubeTemplate, transform.position, Quaternion.identity,
                 _cubeContainer.transform);
-            
+
             cube.InitMainPoints(start, finish);
             cube.CreateShape();
             cube.UpdateMesh();
@@ -25,9 +25,10 @@ namespace Scripts.Path
 
         private void TurnToParent(MainPoint ascendant, MainPoint parent)
         {
-            Vector3 direction = parent.transform.position - ascendant.transform.position;
-            ascendant.transform.forward = direction;
-            ascendant.transform.eulerAngles = new Vector3(ascendant.transform.eulerAngles.x, 90, 0);
+            var transform1 = ascendant.transform;
+            Vector3 direction = parent.transform.position - transform1.position;
+            transform1.forward = direction;
+            transform1.eulerAngles = new Vector3(transform1.eulerAngles.x, 90, 0);
         }
 
         public void AddMainPoint(Vector3 location)

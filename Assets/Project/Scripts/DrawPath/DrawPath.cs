@@ -1,15 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Scripts.Path
+namespace Scripts.DrawPath
 {
     public class DrawPath : MonoBehaviour
     {
         private const float Cooldown = .01f;
-        private const float Distance = .5f;
+        private const float Distance = .3f;
         
-        [SerializeField] private Path _pathTemplate; 
-        
+        [SerializeField] private Path _pathTemplate;
+        [SerializeField] private Camera _camera;
+
         private Vector3 _worldPosition;
         private Plane _plane = new Plane(Vector3.forward, 0);
         private Coroutine _drawingCoroutine;
@@ -41,7 +42,7 @@ namespace Scripts.Path
 
             while (true)
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
                 if (_plane.Raycast(ray, out var location))
                 {
@@ -52,6 +53,8 @@ namespace Scripts.Path
                 
                 var distance = Vector3.Distance(prevPoint, currPoint);
 
+                Debug.Log(distance);    
+                
                 if (distance > Distance)
                 {
                     path.AddMainPoint(_worldPosition);
