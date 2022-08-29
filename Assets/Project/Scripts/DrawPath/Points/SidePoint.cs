@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scripts.Path.Point
+namespace Scripts.DrawPath.Points
 {
     public class SidePoint : MonoBehaviour
     {

@@ -1,7 +1,7 @@
-using Scripts.Path.Point;
+using Scripts.DrawPath.Points;
 using UnityEngine;
 
-namespace Scripts.Path
+namespace Scripts.DrawPath
 {
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]

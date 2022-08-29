@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f52c043135fa2524da08e499a450250c, type: 2}
+  - {fileID: 2100000, guid: 83161a00ec206514688dcad4960ceea3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,12 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877182e19314ac9bf9cac3619497b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  _vertices: []
-  _triangles: 
-  mesh: {fileID: 0}
 --- !u!64 &-5815042636399593180
 MeshCollider:
   m_ObjectHideFlags: 0
