@@ -4,8 +4,8 @@ namespace Scripts.DrawPath.Points
 {
     public class MainPoint : MonoBehaviour
     {
-        private const float Width =  .5f;
-        private const float Thickness = .2f;
+        private const float Width = .5f;
+        private const float Thickness = 0.2f;
 
         [SerializeField] private SidePoint _sidePoint;
 
@@ -36,10 +36,10 @@ namespace Scripts.DrawPath.Points
         {
             RightPoint = sidePoint;
 
-            var closePoint = RightPoint.CreateDepthPoint(Vector3.right * Width);
+            var closePoint = RightPoint.CreateDepthPoint(Vector3.left * Width);
             RightPoint.InitClosePoint(closePoint);
 
-            var farPoint = RightPoint.CreateDepthPoint(Vector3.left * Width);
+            var farPoint = RightPoint.CreateDepthPoint(Vector3.right * Width);
             RightPoint.InitFarPoint(farPoint);
         }
 
