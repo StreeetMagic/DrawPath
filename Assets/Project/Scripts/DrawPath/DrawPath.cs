@@ -5,8 +5,8 @@ namespace Scripts.DrawPath
 {
     public class DrawPath : MonoBehaviour
     {
-        private const float Cooldown = .01f;
-        private const float Distance = .5f;
+        private const float Cooldown = .05f;
+        private const float Distance = 1f;
 
         [SerializeField] private Path _pathTemplate;
         [SerializeField] private Camera _camera;
