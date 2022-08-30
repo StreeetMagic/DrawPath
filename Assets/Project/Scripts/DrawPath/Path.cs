@@ -13,7 +13,7 @@ namespace Scripts.DrawPath
         [SerializeField] private MainPoint _mainPointTemplate;
 
         private readonly List<MainPoint> _points = new List<MainPoint>();
-        private float offset = .05f;
+        private float offset = .01f;
 
         private void CreateCube(MainPoint start, MainPoint finish)
         {
@@ -31,7 +31,7 @@ namespace Scripts.DrawPath
 
             if (parent.transform.position.x - ascendant.transform.position.x < offset)
             {
-                ascendant.transform.Translate(new Vector3(offset * 2, 0, 0));
+                ascendant.transform.Translate(new Vector3(offset * 3, 0, 0));
             }
 
             if (parent.transform.position.x < ascendant.transform.position.x)
