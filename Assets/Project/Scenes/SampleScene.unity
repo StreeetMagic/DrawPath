@@ -201,8 +201,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.072865844
-  m_Center: {x: 0, y: 0.072865844, z: 0}
+  m_Radius: 0.2989593
+  m_Center: {x: -0.0000000066505192, y: 0.2657181, z: 0.0052848896}
 --- !u!1 &71386766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,7 +1371,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!65 &1935175845
 BoxCollider:
