@@ -5,9 +5,9 @@ namespace Scripts.DrawPath
 {
     public class DrawPath : MonoBehaviour
     {
-        private const float Cooldown = .01f;
-        private const float Distance = .3f;
-        
+        private const float Cooldown = .05f;
+        private const float Distance = 1f;
+
         [SerializeField] private Path _pathTemplate;
         [SerializeField] private Camera _camera;
 
@@ -33,31 +33,31 @@ namespace Scripts.DrawPath
             }
         }
 
+        private Vector3 GetClickPosition()
+        {
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+            _plane.Raycast(ray, out var location);
+
+            return _worldPosition = ray.GetPoint(location);
+        }
+
         private IEnumerator Drawing()
         {
             var path = Instantiate(_pathTemplate, transform.position, Quaternion.identity, transform);
-
-            var prevPoint = new Vector3(0, 0, 0);
-            var currPoint = new Vector3(0, 0, 0);
+            var position = GetClickPosition();
+            path.AddMainPoint(position);
+            var prevPoint = position;
 
             while (true)
             {
-                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
-                if (_plane.Raycast(ray, out var location))
-                {
-                    _worldPosition = ray.GetPoint(location);
-                    prevPoint = currPoint;
-                    currPoint = _worldPosition;
-                }
-                
+                var currPoint = GetClickPosition();
                 var distance = Vector3.Distance(prevPoint, currPoint);
 
-                Debug.Log(distance);    
-                
                 if (distance > Distance)
                 {
                     path.AddMainPoint(_worldPosition);
+                    prevPoint = currPoint;
                 }
 
                 yield return new WaitForSeconds(Cooldown);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Scripts.DrawPath.Points;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Scripts.DrawPath
         [SerializeField] private MainPoint _mainPointTemplate;
 
         private readonly List<MainPoint> _points = new List<MainPoint>();
+        private float offset = .05f;
 
         private void CreateCube(MainPoint start, MainPoint finish)
         {
@@ -25,10 +27,24 @@ namespace Scripts.DrawPath
 
         private void TurnToParent(MainPoint ascendant, MainPoint parent)
         {
-            var transform1 = ascendant.transform;
-            Vector3 direction = parent.transform.position - transform1.position;
-            transform1.forward = direction;
-            transform1.eulerAngles = new Vector3(transform1.eulerAngles.x, 90, 0);
+            var direction = parent.transform.position - ascendant.transform.position;
+
+            if (parent.transform.position.x - ascendant.transform.position.x < offset)
+            {
+                ascendant.transform.Translate(new Vector3(offset * 2, 0, 0));
+            }
+
+            if (parent.transform.position.x < ascendant.transform.position.x)
+            {
+                Quaternion rotation = Quaternion.LookRotation(direction, Vector3.down);
+                ascendant.transform.rotation = rotation;
+            }
+
+            else
+            {
+                Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
+                ascendant.transform.rotation = rotation;
+            }
         }
 
         public void AddMainPoint(Vector3 location)
@@ -41,8 +57,8 @@ namespace Scripts.DrawPath
             {
                 _points[0].InitSidePoints();
                 _points[1].InitSidePoints();
-                TurnToParent(_points[1], _points[0]);
                 _points[0].transform.forward = _points[1].transform.forward;
+                TurnToParent(_points[1], _points[0]);
             }
 
             if (_points.Count > 2)
