@@ -1617,6 +1617,10 @@ PrefabInstance:
       value: DrawPath
       objectReference: {fileID: 0}
     - target: {fileID: 3986416585696645735, guid: 1ee58fb779df01b4b892a27931abfbf4, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986416585696645735, guid: 1ee58fb779df01b4b892a27931abfbf4, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
