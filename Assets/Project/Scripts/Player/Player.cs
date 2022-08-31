@@ -8,7 +8,7 @@ namespace Scripts.Player
         
         private void Start()
         {
-            //_pelvis.AddTorque(new Vector3(0,100,100));        
+            _pelvis.AddTorque(new Vector3(0,100,100));        
         }
     }
 }
