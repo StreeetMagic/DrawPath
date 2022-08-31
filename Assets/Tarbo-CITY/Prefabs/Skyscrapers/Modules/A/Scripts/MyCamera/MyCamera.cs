@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Scripts.MyCamera
@@ -7,14 +6,14 @@ namespace Scripts.MyCamera
     {
         [SerializeField] private Transform _pelvis;
 
-        [SerializeField] private Camera _camera;
-        
-        private Vector3 _offset = new Vector3(0, 2, 13);
+        private const float SmoothingPower = 0.2f;
+        private Vector3 _positionOffset = new Vector3(0, 2, 13);
 
-        private void Update()
+        private void LateUpdate()
         {
-            var position = _pelvis.transform.position + _offset;
-            _camera.transform.position = position;
+            Vector3 desiredPosition = _pelvis.position + _positionOffset;
+            transform.position =
+                Vector3.Lerp(transform.position, desiredPosition, 1f / SmoothingPower * Time.deltaTime);
         }
     }
 }
