@@ -19,7 +19,6 @@ namespace Scripts.DrawPath
         {
             var cube = Instantiate(_cubeTemplate, transform.position, Quaternion.identity,
                 _cubeContainer.transform);
-
             cube.InitMainPoints(start, finish);
             cube.CreateShape();
             cube.UpdateMesh();

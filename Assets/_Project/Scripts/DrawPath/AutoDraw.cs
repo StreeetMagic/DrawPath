@@ -46,6 +46,58 @@ namespace Scripts.DrawPath
                 new PointSetting(new Vector3(-3.632f, 53.173f, 0), 2.736f),
                 new PointSetting(new Vector3(-6.406f, 51.85f, 0), 2.794f),
             };
+
+            _pointSettings[1] = new[]
+
+            {
+                new PointSetting(new Vector3(30.279f, 810.665f, 0), 5.39f),
+                new PointSetting(new Vector3(-20.55f, 900.546f, 0), 6.573f),
+            };
+            
+            _pointSettings[2] = new[]
+
+            {
+                new PointSetting(new Vector3(30.279f, 810.665f, 0), 5.39f),
+                new PointSetting(new Vector3(-20.55f, 900.546f, 0), 6.573f),
+            };
+            
+            _pointSettings[3] = new[]
+
+            {
+                new PointSetting(new Vector3(30.279f, 810.665f, 0), 5.39f),
+                new PointSetting(new Vector3(-20.55f, 900.546f, 0), 6.573f),
+            };
+            
+            _pointSettings[4] = new[]
+
+            {
+                new PointSetting(new Vector3(30.279f, 810.665f, 0), 5.39f),
+                new PointSetting(new Vector3(-20.55f, 900.546f, 0), 6.573f),
+            };
+            _pointSettings[5] = new[]
+
+            {
+                new PointSetting(new Vector3(30.279f, 810.665f, 0), 5.39f),
+                new PointSetting(new Vector3(-20.55f, 900.546f, 0), 6.573f),
+            };
+            _pointSettings[6] = new[]
+
+            {
+                new PointSetting(new Vector3(30.279f, 810.665f, 0), 5.39f),
+                new PointSetting(new Vector3(-20.55f, 900.546f, 0), 6.573f),
+            };
+            _pointSettings[7] = new[]
+
+            {
+                new PointSetting(new Vector3(30.279f, 810.665f, 0), 5.39f),
+                new PointSetting(new Vector3(-20.55f, 900.546f, 0), 6.573f),
+            };
+            _pointSettings[8] = new[]
+
+            {
+                new PointSetting(new Vector3(30.279f, 810.665f, 0), 5.39f),
+                new PointSetting(new Vector3(-20.55f, 900.546f, 0), 6.573f),
+            };
         }
 
         private IEnumerator AutoDrawing()

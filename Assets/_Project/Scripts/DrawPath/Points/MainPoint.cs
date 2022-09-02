@@ -6,7 +6,7 @@ namespace Scripts.DrawPath.Points
 {
     public class MainPoint : MonoBehaviour
     {
-        private const float Width = .5f;
+        private const float Width = 1f;
         private const float Thickness = 0.2f;
 
         [SerializeField] private SidePoint _sidePoint;
@@ -68,7 +68,7 @@ namespace Scripts.DrawPath.Points
             var y = Math.Round(transform.position.y, 3);
             var t = Math.Round(CreationTime, 3);
 
-            Debug.Log($"new PointSetting(new Vector3({x}f, {y}f, 0), {t}f),");
+           // Debug.Log($"new PointSetting(new Vector3({x}f, {y}f, 0), {t}f),");
             
         }
     }
