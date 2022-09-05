@@ -17,13 +17,17 @@ namespace Scripts.DrawPath
 
         private void Update()
         {
+            Draw();
+        }
+
+        private void Draw()
+        {
             if (Input.GetMouseButtonDown(0))
             {
                 if (_drawingCoroutine != null)
                 {
                     StopCoroutine(_drawingCoroutine);
                 }
-
                 _drawingCoroutine = StartCoroutine(Drawing());
             }
 
@@ -36,7 +40,6 @@ namespace Scripts.DrawPath
         private Vector3 GetClickPosition()
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
             _plane.Raycast(ray, out var location);
 
             return _worldPosition = ray.GetPoint(location);
@@ -63,5 +66,17 @@ namespace Scripts.DrawPath
                 yield return new WaitForSeconds(Cooldown);
             }
         }
+    }
+}
+
+public struct PointSetting
+{
+    public Vector3 Position { get; }
+    public float Time { get; }
+
+    public PointSetting(Vector3 position, float time)
+    {
+        Position = position;
+        Time = time;
     }
 }
