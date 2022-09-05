@@ -17,15 +17,10 @@ namespace Scripts.Player
             if (collision.gameObject.TryGetComponent(out DrawCube cube))
             {
                 var position = cube.LowPoint.transform.position;
-                
+
                 foreach (var rb in _rigidbodies)
                 {
-                    rb.AddExplosionForce(
-                        _explosionForce, 
-                        position, 
-                        3f, 
-                        2f, 
-                        ForceMode.VelocityChange);
+                    rb.AddExplosionForce(_explosionForce, position, 3f, 2f, ForceMode.VelocityChange);
                 }
             }
         }
