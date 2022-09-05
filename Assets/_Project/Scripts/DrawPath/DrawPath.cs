@@ -40,7 +40,6 @@ namespace Scripts.DrawPath
         private Vector3 GetClickPosition()
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
             _plane.Raycast(ray, out var location);
 
             return _worldPosition = ray.GetPoint(location);
