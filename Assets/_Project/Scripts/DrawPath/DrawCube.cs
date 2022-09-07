@@ -15,6 +15,8 @@ namespace Scripts.DrawPath
         private Vector3[] _vertices;
         private Mesh _mesh;
         private MeshCollider _meshCollider;
+        
+        public MainPoint LowPoint => _mainPoints[1];
 
         private void Awake()
         {
@@ -83,5 +85,7 @@ namespace Scripts.DrawPath
         {
             _meshCollider.material = mat;
         }
+
+       
     }
 }

@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using Scripts.DrawPath;
 using UnityEngine;
 
@@ -5,25 +8,20 @@ namespace Scripts.Player
 {
     public class ForcePusher : MonoBehaviour
     {
-        [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private Transform _explosionPoint;
+        [SerializeField] private List<Rigidbody> _rigidbodies;
+        [SerializeField] private float _explosionForce = 150f;
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.TryGetComponent(out DrawCube cube))
             {
-                var myPos = _rigidbody.worldCenterOfMass;
+                var position = cube.LowPoint.transform.position;
 
-                //var cubePos = collision.transform.TransformPoint(collision.transform.position);
-                var cubeRb = collision.gameObject.TryGetComponent(out Rigidbody rigidbody);
-
-                var cubePos = rigidbody.centerOfMass;
-
-                var direction = (cubePos - myPos).normalized;
-
-                _rigidbody.AddForce(direction * 500f, ForceMode.Acceleration);
-
-                Debug.Log(direction);
-                // Debug.Log(direction);
+                foreach (var rb in _rigidbodies)
+                {
+                    rb.AddExplosionForce(_explosionForce, position, 3f, 2f, ForceMode.VelocityChange);
+                }
             }
         }
     }
