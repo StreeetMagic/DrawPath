@@ -49,8 +49,6 @@ namespace Scripts.DrawPath
         public void AddMainPoint(Vector3 location)
         {
             var point = Instantiate(_mainPointTemplate, location, Quaternion.identity, _pointContainer.transform);
-            point.InitCreationTime(Time.time);
-            point.LogMe();
 
             _points.Add(point);
 
