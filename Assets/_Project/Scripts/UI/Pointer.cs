@@ -54,10 +54,12 @@ namespace Scripts.UI
             if (minDistance > direction.magnitude)
             {
                 _image.gameObject.SetActive(false);
+                _text.gameObject.SetActive(false);
             }
             else
             {
                 _image.gameObject.SetActive(true);
+                _text.gameObject.SetActive(true);
             }
 
             minDistance = Mathf.Clamp(minDistance, 0, direction.magnitude);
