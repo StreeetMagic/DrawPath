@@ -1,4 +1,5 @@
 using System.Collections;
+using Scripts.Player;
 using UnityEngine;
 
 namespace Scripts.DrawPath
@@ -19,6 +20,8 @@ namespace Scripts.DrawPath
         {
             Draw();
         }
+
+
 
         private void Draw()
         {
@@ -67,16 +70,6 @@ namespace Scripts.DrawPath
             }
         }
     }
-}
 
-public struct PointSetting
-{
-    public Vector3 Position { get; }
-    public float Time { get; }
 
-    public PointSetting(Vector3 position, float time)
-    {
-        Position = position;
-        Time = time;
-    }
 }

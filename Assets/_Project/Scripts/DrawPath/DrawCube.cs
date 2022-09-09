@@ -1,5 +1,4 @@
 using Scripts.DrawPath.Points;
-using TMPro;
 using UnityEngine;
 
 namespace Scripts.DrawPath
@@ -29,7 +28,11 @@ namespace Scripts.DrawPath
         {
             GetComponent<MeshCollider>().sharedMesh = _mesh;
             GetComponent<Rigidbody>().isKinematic = true;
-            // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+           
         }
 
         public void InitMainPoints(MainPoint first, MainPoint second)
