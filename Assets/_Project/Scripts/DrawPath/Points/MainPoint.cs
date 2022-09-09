@@ -9,15 +9,9 @@ namespace Scripts.DrawPath.Points
         private const float Thickness = 0.2f;
 
         [SerializeField] private SidePoint _sidePoint;
-        [field: SerializeField] public float CreationTime { get; private set; }
 
         public SidePoint LeftPoint { get; private set; }
         public SidePoint RightPoint { get; private set; }
-
-        public void InitCreationTime(float time)
-        {
-            CreationTime = time;
-        }
 
         public void InitSidePoints()
         {
@@ -59,16 +53,6 @@ namespace Scripts.DrawPath.Points
             sidePoint.transform.forward = transform.position - sidePoint.transform.position;
 
             return sidePoint;
-        }
-
-        public void LogMe()
-        {
-            var x = Math.Round(transform.position.x, 3);
-            var y = Math.Round(transform.position.y, 3);
-            var t = Math.Round(CreationTime, 3);
-
-           // Debug.Log($"new PointSetting(new Vector3({x}f, {y}f, 0), {t}f),");
-            
         }
     }
 }

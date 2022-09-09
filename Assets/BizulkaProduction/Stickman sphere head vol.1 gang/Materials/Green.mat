@@ -9,8 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Green
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
-  m_ShaderKeywords: DR_RIM_ON _CELPRIMARYMODE_NONE _TEXTUREBLENDINGMODE_MULTIPLY
-    _UNITYSHADOWMODE_NONE
+  m_ShaderKeywords: _CELPRIMARYMODE_SINGLE _TEXTUREBLENDINGMODE_MULTIPLY _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -69,8 +68,8 @@ Material:
     - _Blend: 0
     - _BumpScale: 1
     - _CelExtraEnabled: 0
-    - _CelNumSteps: 3
-    - _CelPrimaryMode: 0
+    - _CelNumSteps: 1
+    - _CelPrimaryMode: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -99,10 +98,10 @@ Material:
     - _OverrideLightmapDir: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
-    - _RimEnabled: 1
-    - _SelfShadingSize: 0.5
+    - _RimEnabled: 0
+    - _SelfShadingSize: 0.6
     - _SelfShadingSizeExtra: 0.6
-    - _ShadowEdgeSize: 0.05
+    - _ShadowEdgeSize: 0.264
     - _ShadowEdgeSizeExtra: 0.05
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
@@ -118,11 +117,11 @@ Material:
     - _VertexColorsEnabled: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.044830296, g: 0.9056604, b: 0.012815925, a: 1}
-    - _ColorDim: {r: 0.044830296, g: 0.9056604, b: 0.012815925, a: 1}
+    - _Color: {r: 0.2, g: 0.8156863, b: 0.28627452, a: 1}
+    - _ColorDim: {r: 0.15686275, g: 0.65882355, b: 0.21960784, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _ColorDimExtra: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
-    - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorDimSteps: {r: 0.19215687, g: 0.8, b: 0.28627452, a: 1}
     - _ColorGradient: {r: 0.044830296, g: 0.9056604, b: 0.012815925, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0, g: 0, b: 0, a: 1}
