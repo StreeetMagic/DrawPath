@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Scripts.DrawPath.Points;
+using Scripts.Player;
 using UnityEngine;
 
 namespace Scripts.DrawPath
@@ -12,6 +13,8 @@ namespace Scripts.DrawPath
         [SerializeField] private DrawCube _cubeTemplate;
         [SerializeField] private MainPoint _mainPointTemplate;
 
+        private VisualEffects _visualEffects;
+
         private readonly List<MainPoint> _points = new List<MainPoint>();
         private float offset = .01f;
 
@@ -19,7 +22,7 @@ namespace Scripts.DrawPath
         {
             var cube = Instantiate(_cubeTemplate, transform.position, Quaternion.identity,
                 _cubeContainer.transform);
-            cube.InitMainPoints(start, finish);
+            cube.Init(start, finish, _visualEffects);
             cube.CreateShape();
             cube.UpdateMesh();
         }
@@ -44,6 +47,11 @@ namespace Scripts.DrawPath
                 Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
                 ascendant.transform.rotation = rotation;
             }
+        }
+
+        public void Init(VisualEffects visualEffects)
+        {
+            _visualEffects = visualEffects;
         }
 
         public void AddMainPoint(Vector3 location)

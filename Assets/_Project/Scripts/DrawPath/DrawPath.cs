@@ -11,6 +11,7 @@ namespace Scripts.DrawPath
 
         [SerializeField] private Path _pathTemplate;
         [SerializeField] private Camera _camera;
+        [SerializeField] private VisualEffects _visualEffects;
 
         private Vector3 _worldPosition;
         private Plane _plane = new Plane(Vector3.forward, 0);
@@ -20,8 +21,6 @@ namespace Scripts.DrawPath
         {
             Draw();
         }
-
-
 
         private void Draw()
         {
@@ -53,6 +52,7 @@ namespace Scripts.DrawPath
             var path = Instantiate(_pathTemplate, transform.position, Quaternion.identity, transform);
             var position = GetClickPosition();
             path.AddMainPoint(position);
+            path.Init(_visualEffects);
             var prevPoint = position;
 
             while (true)
