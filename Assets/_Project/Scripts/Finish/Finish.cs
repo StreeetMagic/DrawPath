@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.VFX;
 
 namespace Scripts.Finish
@@ -10,11 +11,14 @@ namespace Scripts.Finish
         
         private bool _isFinished;
 
+        public event UnityAction PlayerFinished;
+
         private void OnCollisionEnter(Collision collision)
         {
             if (_isFinished == false)
             {
                 StartEffects();
+                PlayerFinished?.Invoke();
             }
         }
 
