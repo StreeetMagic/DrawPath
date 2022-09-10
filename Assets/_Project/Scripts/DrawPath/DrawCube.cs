@@ -1,5 +1,5 @@
 using Scripts.DrawPath.Points;
-using TMPro;
+using Scripts.Player;
 using UnityEngine;
 
 namespace Scripts.DrawPath
@@ -10,6 +10,8 @@ namespace Scripts.DrawPath
     [RequireComponent(typeof(MeshCollider))]
     public class DrawCube : MonoBehaviour
     {
+        [SerializeField] private VisualEffects _visualEffects;
+        
         private readonly MainPoint[] _mainPoints = new MainPoint[2];
         private int[] _triangles;
         private Vector3[] _vertices;
@@ -29,13 +31,18 @@ namespace Scripts.DrawPath
         {
             GetComponent<MeshCollider>().sharedMesh = _mesh;
             GetComponent<Rigidbody>().isKinematic = true;
-            // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
 
-        public void InitMainPoints(MainPoint first, MainPoint second)
+        private void OnCollisionEnter(Collision collision)
+        {
+            _visualEffects.StartMassiveBlood();
+        }
+
+        public void Init(MainPoint first, MainPoint second, VisualEffects visualEffects)
         {
             _mainPoints[0] = first;
             _mainPoints[1] = second;
+            _visualEffects = visualEffects;
         }
 
         public void CreateShape()
@@ -79,11 +86,6 @@ namespace Scripts.DrawPath
             _mesh.Clear();
             _mesh.vertices = _vertices;
             _mesh.triangles = _triangles;
-        }
-
-        public void SetMaterial(PhysicMaterial mat)
-        {
-            _meshCollider.material = mat;
         }
     }
 }

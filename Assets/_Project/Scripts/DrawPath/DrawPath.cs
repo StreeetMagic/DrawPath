@@ -1,4 +1,5 @@
 using System.Collections;
+using Scripts.Player;
 using UnityEngine;
 
 namespace Scripts.DrawPath
@@ -10,6 +11,7 @@ namespace Scripts.DrawPath
 
         [SerializeField] private Path _pathTemplate;
         [SerializeField] private Camera _camera;
+        [SerializeField] private VisualEffects _visualEffects;
 
         private Vector3 _worldPosition;
         private Plane _plane = new Plane(Vector3.forward, 0);
@@ -50,6 +52,7 @@ namespace Scripts.DrawPath
             var path = Instantiate(_pathTemplate, transform.position, Quaternion.identity, transform);
             var position = GetClickPosition();
             path.AddMainPoint(position);
+            path.Init(_visualEffects);
             var prevPoint = position;
 
             while (true)
@@ -67,16 +70,6 @@ namespace Scripts.DrawPath
             }
         }
     }
-}
 
-public struct PointSetting
-{
-    public Vector3 Position { get; }
-    public float Time { get; }
 
-    public PointSetting(Vector3 position, float time)
-    {
-        Position = position;
-        Time = time;
-    }
 }
