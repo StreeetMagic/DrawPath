@@ -44,7 +44,6 @@ namespace Scripts.Player
                 _smallBlood.transform.forward = Vector3.right;
                 _smallBloodParticles.Play();
                 _canBleed = false;
-                StartCoroutine(EffectCooldown());
             }
         }
 
