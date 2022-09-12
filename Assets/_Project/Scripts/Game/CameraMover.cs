@@ -1,12 +1,13 @@
 using UnityEngine;
 
-namespace Scripts.MyCamera
+namespace Scripts.Game
 {
-    public class MyCamera : MonoBehaviour
+    public class CameraMover : MonoBehaviour
     {
+        private const float SmoothingPower = 0.1f;
+        
         [SerializeField] private Transform _pelvis;
 
-        [SerializeField] private float _smoothingPower = 0.2f;
         private Vector3 _positionOffcet;
 
         private void Awake()
@@ -19,7 +20,7 @@ namespace Scripts.MyCamera
             Vector3 desiredPosition = _pelvis.position + _positionOffcet;
 
             transform.position =
-                Vector3.Lerp(transform.position, desiredPosition, 1f / _smoothingPower * Time.fixedDeltaTime);
+                Vector3.Lerp(transform.position, desiredPosition, 1f / SmoothingPower * Time.fixedDeltaTime);
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Scripts.DrawPath.Points;
 using Scripts.Player;
@@ -8,21 +7,23 @@ namespace Scripts.DrawPath
 {
     public class Path : MonoBehaviour
     {
+        private const int MinPointCount = 2;
+
         [SerializeField] private GameObject _cubeContainer;
         [SerializeField] private GameObject _pointContainer;
-        [SerializeField] private DrawCube _cubeTemplate;
+        [SerializeField] private Cube _cubeTemplate;
         [SerializeField] private MainPoint _mainPointTemplate;
 
-        private VisualEffects _visualEffects;
-
+        private readonly Vector3 _offcet = new Vector3(.03f, 0, 0);
         private readonly List<MainPoint> _points = new List<MainPoint>();
-        private float offset = .01f;
 
-        private void CreateCube(MainPoint start, MainPoint finish)
+        private VisualEffects _playerVisualEffects;
+        private float _offcetDelta = 0.02f;
+
+        private void DrawCube(MainPoint start, MainPoint finish)
         {
-            var cube = Instantiate(_cubeTemplate, transform.position, Quaternion.identity,
-                _cubeContainer.transform);
-            cube.Init(start, finish, _visualEffects);
+            var cube = Instantiate(_cubeTemplate, transform.position, Quaternion.identity, _cubeContainer.transform);
+            cube.Init(start, finish, _playerVisualEffects);
             cube.CreateShape();
             cube.UpdateMesh();
         }
@@ -31,27 +32,27 @@ namespace Scripts.DrawPath
         {
             var direction = parent.transform.position - ascendant.transform.position;
 
-            if (parent.transform.position.x - ascendant.transform.position.x < offset)
+            if (parent.transform.position.x - ascendant.transform.position.x < _offcetDelta)
             {
-                ascendant.transform.Translate(new Vector3(offset * 3, 0, 0));
+                ascendant.transform.Translate(_offcet);
             }
 
             if (parent.transform.position.x < ascendant.transform.position.x)
             {
-                Quaternion rotation = Quaternion.LookRotation(direction, Vector3.down);
+                var rotation = Quaternion.LookRotation(direction, Vector3.down);
                 ascendant.transform.rotation = rotation;
             }
 
             else
             {
-                Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
+                var rotation = Quaternion.LookRotation(direction, Vector3.up);
                 ascendant.transform.rotation = rotation;
             }
         }
 
         public void Init(VisualEffects visualEffects)
         {
-            _visualEffects = visualEffects;
+            _playerVisualEffects = visualEffects;
         }
 
         public void AddMainPoint(Vector3 location)
@@ -60,7 +61,7 @@ namespace Scripts.DrawPath
 
             _points.Add(point);
 
-            if (_points.Count == 2)
+            if (_points.Count == MinPointCount)
             {
                 _points[0].InitSidePoints();
                 _points[1].InitSidePoints();
@@ -68,12 +69,12 @@ namespace Scripts.DrawPath
                 TurnToParent(_points[1], _points[0]);
             }
 
-            if (_points.Count > 2)
+            if (_points.Count > MinPointCount)
             {
                 var number = _points.Count - 1;
                 _points[number].InitSidePoints();
                 TurnToParent(_points[number], _points[number - 1]);
-                CreateCube(_points[number - 1], _points[number]);
+                DrawCube(_points[number - 1], _points[number]);
             }
         }
     }

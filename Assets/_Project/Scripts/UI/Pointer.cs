@@ -7,11 +7,10 @@ namespace Scripts.UI
     [ExecuteAlways]
     public class Pointer : MonoBehaviour
     {
-        [SerializeField] private Transform _playerTransform;
         [SerializeField] private Camera _camera;
-        [SerializeField] private Transform _pointerIconTransform;
         [SerializeField] private Image _image;
-
+        [SerializeField] private Transform _playerTransform;
+        [SerializeField] private Transform _pointerIconTransform;
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private Vector3 _offcet = new Vector3(5, 0, 0);
 
@@ -24,11 +23,8 @@ namespace Scripts.UI
         private void LocateText()
         {
             _text.transform.position = _image.transform.position + _offcet;
-
             var distance = Mathf.Round((transform.position - _playerTransform.position).magnitude);
-
             var text = distance.ToString() + " m";
-
             _text.text = text;
         }
 

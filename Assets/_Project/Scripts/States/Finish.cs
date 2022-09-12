@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.VFX;
 
-namespace Scripts.Finish
+namespace Scripts.States
 {
     public class Finish : MonoBehaviour
     {
