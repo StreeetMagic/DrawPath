@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Scripts.Fail
+namespace Scripts.States
 {
     public class Fail : MonoBehaviour
     {
-        public event UnityAction PlayerFallen;
+        public event UnityAction PlayerFailed;
 
         private void OnCollisionEnter(Collision collision)
         {
-            PlayerFallen?.Invoke();
+            PlayerFailed?.Invoke();
         }
     }
 }

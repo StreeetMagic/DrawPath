@@ -8,7 +8,7 @@ namespace Scripts.DrawPath
     [RequireComponent(typeof(MeshRenderer))]
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(MeshCollider))]
-    public class DrawCube : MonoBehaviour
+    public class Cube : MonoBehaviour
     {
         [SerializeField] private VisualEffects _visualEffects;
         

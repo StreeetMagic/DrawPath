@@ -8,19 +8,15 @@ namespace Scripts.Player
     {
         private const float _cooldown = 1f;
 
-        [SerializeField] private GameObject _massiveBlood;
-        [SerializeField] private GameObject _smallBlood;
-
         [SerializeField] private Rigidbody _rigidbody;
 
-        private ParticleSystem _massiveBloodParticles;
-        private ParticleSystem _smallBloodParticles;
+        [SerializeField] private ParticleSystem _massiveBloodParticles;
+        [SerializeField] private ParticleSystem _smallBloodParticles;
+        
         private bool _canBleed;
 
         private void Start()
         {
-            _massiveBloodParticles = _massiveBlood.GetComponent<ParticleSystem>();
-            _smallBloodParticles = _smallBlood.GetComponent<ParticleSystem>();
             StartCoroutine(EffectCooldown());
         }
 
@@ -28,8 +24,8 @@ namespace Scripts.Player
         {
             if (_canBleed)
             {
-                _massiveBlood.transform.position = _rigidbody.worldCenterOfMass;
-                _massiveBlood.transform.forward = Vector3.right;
+                _massiveBloodParticles.transform.position = _rigidbody.worldCenterOfMass;
+                _massiveBloodParticles.transform.forward = Vector3.right;
                 _massiveBloodParticles.Play();
                 _canBleed = false;
                 StartCoroutine(EffectCooldown());
@@ -40,8 +36,8 @@ namespace Scripts.Player
         {
             if (_canBleed)
             {
-                _smallBlood.transform.position = _rigidbody.worldCenterOfMass;
-                _smallBlood.transform.forward = Vector3.right;
+                _smallBloodParticles.transform.position = _rigidbody.worldCenterOfMass;
+                _smallBloodParticles.transform.forward = Vector3.right;
                 _smallBloodParticles.Play();
                 _canBleed = false;
             }

@@ -1,4 +1,5 @@
 using System.Collections;
+using Scripts.States;
 using UnityEngine;
 
 namespace Scripts.Game
@@ -12,9 +13,8 @@ namespace Scripts.Game
         [SerializeField] private GameObject _failUI;
         [SerializeField] private GameObject _drawlUI;
         [SerializeField] private GameObject _clearUI;
-        [SerializeField] private Fail.Fail _platform;
-        [SerializeField] private Finish.Finish _finish;
-
+        [SerializeField] private Fail _platform;
+        [SerializeField] private Finish _finish;
         [SerializeField] private Camera _secondaryCamera;
         [SerializeField] private Camera _mainCamera;
 
@@ -25,33 +25,33 @@ namespace Scripts.Game
 
         private void OnEnable()
         {
-            _platform.PlayerFallen += EnableFailUI;
+            _platform.PlayerFailed += EnableFailUI;
             _finish.PlayerFinished += EnableFinishUI;
         }
 
         private void OnDisable()
         {
-            _platform.PlayerFallen -= EnableFailUI;
+            _platform.PlayerFailed -= EnableFailUI;
             _finish.PlayerFinished -= EnableFinishUI;
         }
 
         private void EnableFailUI()
         {
-            _failUI.gameObject.SetActive(true);
+            _failUI.SetActive(true);
             StartCoroutine(WaitForFail());
         }
 
         private void EnableFinishUI()
         {
-            _clearUI.gameObject.SetActive(true);
+            _clearUI.SetActive(true);
         }
 
         private void EnableDrawUI()
         {
             _mainCamera.gameObject.SetActive(false);
             _secondaryCamera.gameObject.SetActive(true);
-            _failUI.gameObject.SetActive(false);
-            _drawlUI.gameObject.SetActive(true);
+            _failUI.SetActive(false);
+            _drawlUI.SetActive(true);
             StartCoroutine(WaitForDraw());
         }
 
@@ -64,8 +64,6 @@ namespace Scripts.Game
         private IEnumerator WaitForDraw()
         {
             yield return new WaitForSeconds(DrawTime);
-            // _mainCamera.gameObject.SetActive(true);
-            // _secondaryCamera.gameObject.SetActive(false);
             UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
         }
     }
