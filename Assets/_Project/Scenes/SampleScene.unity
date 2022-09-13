@@ -489,11 +489,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1589085057953504505, guid: 09f08373c3881b34c95cf0b55bc30300, type: 3}
   m_PrefabInstance: {fileID: 1585979827}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &20070319 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 26051312985467237, guid: 480b5d0b18de56e45ba2b98508bc52ed, type: 3}
-  m_PrefabInstance: {fileID: 26051310972386227}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &24632003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3474,7 +3469,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-103950
+  m_Name: pb_Mesh-162798
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17539,7 +17534,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-103938
+  m_Name: pb_Mesh-162786
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18446,11 +18441,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f08373c3881b34c95cf0b55bc30300, type: 3}
---- !u!198 &751998508 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 26051312454401511, guid: 480b5d0b18de56e45ba2b98508bc52ed, type: 3}
-  m_PrefabInstance: {fileID: 26051310972386227}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &755883693
 GameObject:
   m_ObjectHideFlags: 0
@@ -18562,7 +18552,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-134982
+  m_Name: pb_Mesh-193842
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35782,7 +35772,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-135936
+  m_Name: pb_Mesh-194796
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -46647,7 +46637,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh41972
+  m_Name: pb_Mesh3467810
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -54329,14 +54319,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1220327378}
     m_Modifications:
-    - target: {fileID: 1317999642, guid: 480b5d0b18de56e45ba2b98508bc52ed, type: 3}
-      propertyPath: _smallBloodParticles
-      value: 
-      objectReference: {fileID: 20070319}
-    - target: {fileID: 1317999642, guid: 480b5d0b18de56e45ba2b98508bc52ed, type: 3}
-      propertyPath: _massiveBloodParticles
-      value: 
-      objectReference: {fileID: 751998508}
     - target: {fileID: 6949852843302054255, guid: 480b5d0b18de56e45ba2b98508bc52ed, type: 3}
       propertyPath: m_Name
       value: Player

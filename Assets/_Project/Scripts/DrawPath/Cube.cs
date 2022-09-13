@@ -19,6 +19,7 @@ namespace Scripts.DrawPath
         private MeshCollider _meshCollider;
 
         public MainPoint LowPoint => _mainPoints[1];
+        public MainPoint TopPoint => _mainPoints[0];
 
         private void Awake()
         {
